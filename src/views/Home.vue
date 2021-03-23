@@ -13,12 +13,15 @@ export default {
     return{
       addressid:"",
       addressdata:"",
+      addressin:""
     }
   },
   methods: {
-    async value(addressin){
-          let address = await axios.get(`https://apis.postcode-jp.com/api/v4/${this.addressid}/addressdata?callback`)
-          addressin = JSON.stringify(address)
+    async value(){
+          let address = await axios.get(
+`https://apis.postcode-jp.com/api/v4/postcodes/${this.addressid}?apiKey=JxZe9Ap6Qz3QOsAQPIcs83DIk8JgGYa9UEFveTH`)
+          this.addressin = JSON.stringify(address.data[0].allAddress)
+          console.log(address)
     }
   },
 
